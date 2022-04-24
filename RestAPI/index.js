@@ -12,7 +12,7 @@ app.get('/hello', (req, res) => {
 
 /*
 Lista de endpoints da aplicação CRUD de utilizadores
-- [GET] /utilizadores - Retorna a lista de mensgens
+- [GET] /utilizadores - Retorna a lista de utilizadores
 - [GET] /utilizadores{id} - Retorna uma mensgem pelo ID
 - [GET] /utilizadores/{id} - Atualiza utilizador pelo ID
 - [POST] /utilizadores - Cria um novo utilizador
