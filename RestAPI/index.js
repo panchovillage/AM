@@ -43,11 +43,11 @@ app.get('/mensagens/:id', (req, res) => {
 
 //- [POST] /mensagens - Cria uma nova mensagem
 app.post('/mensagens', (req, res) => {
- const mensagem = req.body;
+ const mensagem = req.body.mensagem;
 
  console.log(mensagem);
 
- res.send('Criar uma nova mensagem.')
+ res.send(mensagem)
   
 });
 
