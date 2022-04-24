@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-
-app.get('/', function (req, res) {
+const port = 3000;
+app.get('/hello', (req, res) => {
   res.send('Hello World')
 })
 
-app.listen(3000, function(){
+app.listen(port, function(){
 
-console.info('App está a executar em: http://localhost:3000')
+console.info('App está a executar em: http://localhost:${port}')
 
 })
