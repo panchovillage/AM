@@ -1,6 +1,8 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const res = require('express/lib/response');
 const app = express()
+app.use(bodyParser.json());
 const port = 3000;
 app.get('/hello', (req, res) => {
   res.send('Hello World')
@@ -38,6 +40,18 @@ app.get('/mensagens/:id', (req, res) => {
  
   res.send(mensagem);
 });
+
+//- [POST] /mensagens - Cria uma nova mensagem
+app.post('/mensagens', (req, res) => {
+ const mensagem = req.body.mensagem;
+
+ console.log(mensagem);
+
+ res.send(mensagem)
+  
+});
+
+
 
 
 app.listen(port, function(){
