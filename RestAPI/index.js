@@ -11,6 +11,7 @@ app.get('/hello', (req, res) => {
 /*
 Lista de endpoints da aplicação CRUD de mensagens
 - [GET] /mensagens - Retorna a lista de mensgens
+- [GET] /mensagens{id} - Retorna uma mensgem pelo ID
 - [GET] /mensagens/{id} - Atualiza msg pelo ID
 - [POST] /mensagens - Cria uma nova mensagem
 - [PUT] /mensagens/{id} - Atualiza msg pelo ID
