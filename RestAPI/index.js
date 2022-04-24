@@ -31,8 +31,8 @@ const mensagens = [
   });
 
 // - [GET] /mensagens{id} - Retorna uma mensgem pelo ID
-app.get('/mensagens', (req, res) => {
- const id = 0;
+app.get('/mensagens/:id', (req, res) => {
+ const id = req.params.id - 1;
 
  const mensagem = mensagens[id];
  
