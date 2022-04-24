@@ -11,43 +11,64 @@ app.get('/hello', (req, res) => {
 
 
 /*
-Lista de endpoints da aplicação CRUD de mensagens
-- [GET] /mensagens - Retorna a lista de mensgens
-- [GET] /mensagens{id} - Retorna uma mensgem pelo ID
-- [GET] /mensagens/{id} - Atualiza msg pelo ID
-- [POST] /mensagens - Cria uma nova mensagem
-- [PUT] /mensagens/{id} - Atualiza msg pelo ID
-- [DELETE] /mensagens/{id} - Remover uma msg pelo ID
+Lista de endpoints da aplicação CRUD de utilizadores
+- [GET] /utilizadores - Retorna a lista de mensgens
+- [GET] /utilizadores{id} - Retorna uma mensgem pelo ID
+- [GET] /utilizadores/{id} - Atualiza utilizador pelo ID
+- [POST] /utilizadores - Cria um novo utilizador
+- [PUT] /utilizadores/{id} - Atualiza utilizador pelo ID
+- [DELETE] /utilizadores/{id} - Remover um utilizador pelo ID
 
 */
 
-const mensagens = [
-  "Essa é a primeira mensagem", 
-  "Essa é a segunda mensagem"
-  ];
-//mensagens[0]
+const utilizadores = [ 
+  {
+        "Name" : "John",
+        "Age" :  30,
+        "Address" : "Rua A"
+  
+  },
+  {
+    "Name" : "Robert",
+    "Age" :  36,
+    "Address" : "Rua Z"
 
-//[GET] /mensagens - Retorna a lista de mensgens
-  app.get('/mensagens', (req, res) => {
-  res.send(mensagens); 
+},
+
+{
+  "Name" : "Carl",
+  "Age" :  28,
+  "Address" : "Rua G"
+
+},
+
+  ];
+  
+//utilizadores[0]
+
+//[GET] /utilizadores - Retorna a lista de utilizadores
+  app.get('/utilizadores', (req, res) => {
+  res.send(utilizadores); 
   });
 
-// - [GET] /mensagens{id} - Retorna uma mensgem pelo ID
-app.get('/mensagens/:id', (req, res) => {
+// - [GET] /utilizadores{id} - Retorna um utilizador pelo ID
+app.get('/utilizadores/:id', (req, res) => {
  const id = req.params.id - 1;
 
- const mensagem = mensagens[id];
+ const utilizador = utilizadores[id];
  
-  res.send(mensagem);
+  res.send(utilizador);
 });
 
-//- [POST] /mensagens - Cria uma nova mensagem
-app.post('/mensagens', (req, res) => {
- const mensagem = req.body.mensagem;
+//- [POST] /utilizadores - Cria um novo utilizador
+app.post('/utilizadores', (req, res) => {
+ const utilizador = req.body;
 
- console.log(mensagem);
+ utilizadores.push(utilizador);
 
- res.send(mensagem)
+ console.log(utilizador);
+
+ res.send("Criou um novo utilizador");
   
 });
 
@@ -55,7 +76,7 @@ app.post('/mensagens', (req, res) => {
 
 
 app.listen(port, function(){
-console.info('App está a executar em: http://localhost:${port}')
+console.info('App está a executar em: http://localhost:{'+port+'}');
 
 });
 
