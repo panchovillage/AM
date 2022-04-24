@@ -48,14 +48,23 @@ const utilizadores = [
 
 //[GET] /utilizadores - Retorna a lista de utilizadores
   app.get('/utilizadores', (req, res) => {
+    res.send(utilizadores.filter(Boolean));
   res.send(utilizadores); 
   });
 
 // - [GET] /utilizadores{id} - Retorna um utilizador pelo ID
 app.get('/utilizadores/:id', (req, res) => {
+
  const id = req.params.id - 1;
 
  const utilizador = utilizadores[id];
+
+ if (!utilizador) {
+  res.send('Utilizador não encontrado.');
+
+  return;
+}
+
  
   res.send(utilizador);
 });
@@ -72,8 +81,46 @@ app.post('/utilizadores', (req, res) => {
   
 });
 
+//- [PUT] /utilizadores/{id} - Atualiza utilizador pelo ID
+
+app.put('/utilizadores/:id', (req, res) => {
+
+  const id = req.params.id - 1;
+
+  const utilizador = req.body;
+
+  const utilizadorAux = utilizadores[id] 
+ 
+    if (!utilizadorAux) {
+    res.send('Utilizador não encontrado.');
+  }   
+
+  utilizadores[id] = utilizador;
 
 
+    res.send('Utilizador atualizado com sucesso');
+  });
+
+
+
+
+
+  //- [DELETE] /Utilizadores/{id} - Remover uma utilizador pelo ID
+app.delete('/utilizadores/:id', (req, res) => {
+  const id = req.params.id - 1;
+
+  const utilizadorAux = utilizadores[id] 
+ 
+    if (!utilizadorAux) {
+    res.send('Utilizador não encontrado.');
+  }   
+
+
+  delete utilizadores[id],
+
+  res.send('Utilizador removido com sucesso');
+
+});
 
 app.listen(port, function(){
 console.info('App está a executar em: http://localhost:{'+port+'}');
